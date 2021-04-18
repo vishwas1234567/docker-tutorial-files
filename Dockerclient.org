@@ -1,0 +1,164 @@
+* Getting Familiar with the Docker Client:thus lets talk some theory
+Docker Engine is a containerization technology that you can use to create and containerize your software. The Docker Engine is a client-server programme that includes the following features:
+
+Dockerd is a daemon method that runs on a computer for a long time.
+APIs define how programmes can communicate with and advise the Docker daemon.
+
+Docker Engine is available on a variety of Linux platforms, macOS and Windows 10 through Docker Desktop, and as a static binary installation. Find your preferred operating system setting and do it.(in linux and mac the installation is a little different thus refer to videos,in windows you just need to run the exe file and then add the dependencied like wsl2 or Hyper-V backend that is required.)
+
+
+To check that everything is set-up, run the following:
+The client and daemon API must both be at least 1.25 to use this command. Use the =docker version= command on the client to check your client and daemon API versions.
+
+#+BEGIN_EXAMPLE
+ docker run hello-world
+#+END_EXAMPLE
+
+#+BEGIN_SRC sh
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+[container id]: Pull complete
+Digest: sha256:[digest id -very long number[
+Status: Downloaded newer image for hello-world:latest
+...
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+
+$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+$ docker images hello-world
+REPOSITORY   TAG     IMAGE ID      SIZE
+hello-world  latest  d1165f221234  13336
+
+** Pulling an Image
+#+END_EXAMPLE
+
+Now that everything is set up, let's walk through how to run your first container. We will run an ubuntu container, and get familiar with some of the =docker= commands.
+
+In your terminal, run the following:
+
+#+BEGIN_EXAMPLE
+ docker pull ubuntu
+#+END_EXAMPLE
+
+The pull command fetches the latest ubuntu image from *Dockerhub*, a public container registry. To see which images are downloaded to your machine, run the following:
+
+#+BEGIN_EXAMPLE
+ docker images
+#+END_EXAMPLE
+
+Now that we have pulled our first image, it is time to run the container.
+
+** Running a Container
+In your terminal, run the following:
+#+BEGIN_EXAMPLE
+ docker run ubuntu echo "hello!"
+#+END_EXAMPLE
+
+What just happened?
+
+1. When you call =run=, the Docker client calls the Docker daemon
+2. The Docker daemon checks locally to see if the image is available, if it is not, it downloads it from Dockerhub 
+3. If the image is present, the daemon creates the container and runs the command you specified in the containter
+4. The output of the command is streamed to the client and you observe it
+
+In our above example, the Docker client ran the command in the container and then exited out...in a matter of seconds! The speed with which containers can be created and commands run makes them very useful in many use cases. 
+
+Note that the container exits after the command you pass to it is run. For it to not exit, you will need to run the container in *interactive* mode:
+#+BEGIN_EXAMPLE
+ docker run -it ubuntu 
+#+END_EXAMPLE
+
+This drops you in to the container. Try out your favourite commands (=ls -la=). You can exit the container by typing =exit=.
+
+If you want to see what containers you have running, type:
+#+BEGIN_EXAMPLE
+ docker ps
+#+END_EXAMPLE
+
+Since you have exited out of all the containers, you will see nothing here. To see the containers that you have run, try:
+
+#+BEGIN_EXAMPLE
+ docker ps -a
+#+END_EXAMPLE
+
+This shows you a list of all the containers, you have run and also their Status. To get just the container IDs, you can use =docker ps -a -q=. The point to note here is that the image persists but the containers only exist for the time that you want to run them. You essentially have many machines with various configurations running on your machine or server as you need them. 
+
+If at any time, you want to clean up images and containers, you can use:
+#+BEGIN_EXAMPLE
+ docker rm $(docker ps -a -q)
+#+END_EXAMPLE
+
+This clears all the containers on your machine. Similarly, to remove all images, use =docker rmi $(docker images -a -q)=.
+Even =docker pause= works the same.
+
+If at any time you feel like you need to see the port initialized then you have to go and run:
+#+BEGIN_EXAMPLE
+ docker port [Contianer-id]
+#+END_EXAMPLE
+
+if you want to test the port:
+#+BEGIN_EXAMPLE
+ docker port test
+#+END_EXAMPLE
+Will give you the list of all the ports running.
+
+
+or else you can also try:
+#+BEGIN_EXAMPLE
+docker port test 7890/tcp 
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+docker port test 7890/udp
+#+END_EXAMPLE
+
+tcp/udp to be initialzed will depend on the nature of the port.
+
+
+Lastely when we want to exectue the continer locally on the required port then we need to type the commans
+#+BEGIN_EXAMPLE
+docker run -t -d -p [your desired port]:[80] --name [name-for-running-command] [docker-image:tag]
+#+END_EXAMPLE
+
+
+Then you can go to the web-browser and you can type in
+#+BEGIN_EXAMPLE
+locallost:[your desired port]
+#+END_EXAMPLE
+
+To disable some extensions:
+#+BEGIN_EXAMPLE
+docker plugin disable [OPTIONS] PLUGIN   
+#+END_EXAMPLE
+The above command helps you in getting the files right for the installation.For more refer here : https://docs.docker.com/engine/reference/commandline/plugin_disable/
+
+
+Then if you want to learn about the security of the Container
+#+BEGIN_EXAMPLE
+docker scan
+#+END_EXAMPLE
