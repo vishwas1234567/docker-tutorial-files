@@ -68,11 +68,11 @@ Docker swarm schedules assignments using various methodologies to ensure that ad
 lets do some commands on the Docker Swarm
 
 if we want to really test the docker swarm and nderstand their commands:
-
+#+BEGIN_EXAMPLE
 docker swarm COMMAND
-
+#+END_EXAMPLE
 Docker CA command is to certify the Docker container:
-
+#+BEGIN_EXAMPLE
 docker swarm ca
 
 -----BEGIN CERTIFICATE-----
@@ -85,12 +85,13 @@ Af8EBTADAQH/MB0GA1UdDgQWBBSfUy5bjUnBAx/B0GkOBKp91XvxzjAKBggqhkjO
 PQQDAgNJADBGAiEAnbvh0puOS5R/qvy1PMHY1iksYKh2acsGLtL/jAIvO4ACIQCi
 lIwQqLkJ48SQqCjG1DBTSBsHmMSRT+6mE2My+Z3GKA==
 -----END CERTIFICATE-----
-
+#+END_EXAMPLE
 
 This is a cluster management command, and must be executed on a swarm manager node. To learn about managers and workers, refer to the Swarm mode section in the documentation.
 
 you can also look at the =--rotate== option here
 
+#+BEGIN_EXAMPLE
 docker swarm ca --rotate
 
 desired root digest: sha256:05da740cf2577a25224c53019e2cce99bcc5ba09664ad6bb2a9425d9ebd1b53e
@@ -107,10 +108,11 @@ Af8EBTADAQH/MB0GA1UdDgQWBBSEL02z6mCI3SmMDmITMr12qCRY2jAKBggqhkjO
 PQQDAgNJADBGAiEA263Eb52+825EeNQZM0AME+aoH1319Zp9/J5ijILW+6ACIQCg
 gyg5u9Iliel99l7SuMhNeLkrU7fXs+Of1nTyyM73ig==
 -----END CERTIFICATE-----
-
+#+END_EXAMPLE
 
 The command to initialize the container is given here,container are more 
 
+#+BEGIN_EXAMPLE
 docker swarm --init [OPTIONS]
 
 Initialize a swarm. The docker engine targeted by this command becomes a manager in the newly created single-node swarm.
@@ -125,27 +127,35 @@ To add a worker to this swarm, run the following command:
     172.17.0.2:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+#+END_EXAMPLE
 
 =--data-path-port=
 
 This flag allows you to choose the UDP port number that will be used for data path traffic. The given port number must be between 1024 and 49151. If this flag is not set or is set to 0, the port number 4789 is used by default. The data path port can only be configured when the swarm is first created, and it applies to all nodes that join the swarm.The following example initializes a new Swarm, and configures the data path port to UDP port 7777;
 
+#+BEGIN_EXAMPLE
 docker swarm init --data-path-port=7777
-
+#+END_EXAMPLE
 
 thus lets talk some really required commands(this might repeat as some commands were reused as we really wanted to get the intruction to the commands that was needed,The above might not help you on getting some commands to the demo thus had to give the above sessional introuction.
 
 =Initilizing the swarm=
 
+#+BEGIN_EXAMPLE
 docker swarm init --advertise-addr <ip-address>
+#+END_EXAMPLE
 
 =List of the services=
 
+#+BEGIN_EXAMPLE
 docker services ls
+#+END_EXAMPLE
 
 =listtask of Services=
 
+#+BEGIN_EXAMPLE
 docker service ps <name>
+#+END_EXAMPLE
 
 =Creating the new service=
 
@@ -153,24 +163,34 @@ Docker service create <name> <image-name>
 
 =Remove Service=
 
+#+BEGIN_EXAMPLE
 docker service rm <name>
+#+END_EXAMPLE
 
 =Scalling service=
 
+#+BEGIN_EXAMPLE
 docker service scale <name?=5
+#+END_EXAMPLE
 
 thus a common command 
 
-The aboe is the service level swarm integratonmthus we need to get to the node level ,thus this programme is no less than an kubernetes cluster that we are trying to work with.
+The above is the service level swarm integraton thus we need to get to the node level ,thus this programme is no less than an kubernetes cluster that we are trying to work with.
 
 =the command to list the number of nodes working=
 
+#+BEGIN_EXAMPLE
 docker node ls
+#+END_EXAMPLE
 
 =Listing the services in the node=
 
+#+BEGIN_EXAMPLE
 docker node ps
+#+END_EXAMPLE
 
 =removing the node=
 
+#+BEGIN_EXAMPLE
 docker node rm<id>
+#+END_EXAMPLE
