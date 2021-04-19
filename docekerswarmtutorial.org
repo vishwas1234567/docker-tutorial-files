@@ -1,8 +1,13 @@
-#Docker Swarm
+Docker Swarm
+
 A Docker Swarm is a group of either physical or virtual machines that are running the Docker application and that have been configured to join together in a cluster. ... The activities of the cluster are controlled by a swarm manager, and machines that have joined the cluster are referred to as nodes.
 
 Docker swarm is a container orchestration application, which helps the user to handle multiple containers that are distributed across multiple host machines.
 
 One of the primary advantages of running a docker swarm is the high degree of availability provided for applications. In a docker swarm, there are typically several worker nodes and at least one manager node that is responsible for handling the worker nodes' resources efficiently and ensuring that the cluster operates efficiently.
 
+Docker Swarm Explained: To contextualise our definition of a Docker swarm, let's first describe some of the more basic concepts associated with containers and the Docker framework.
 
+Docker is a software interface that allows software developers to seamlessly incorporate container use into the software development process. Docker is an open source software that is usable for Windows and Mac, making it accessible to developers operating on a range of technologies. The programme serves as a command and control interface between the host operating system and containerized systems.
+
+The key subject of the docker programme is containers and their use and management in the software development process. Containers allow developers to bundle software with all of the code and dependencies required for them to work in any computing environment. As a result, when moving containerized applications from one computing environment to another, they run reliably.
