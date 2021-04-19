@@ -1,0 +1,59 @@
+
+* Getting Familiar with a Dockerfile
+
+** Terminology Review
+- Image: copy for the container you want to build. Often based on other images you can never have .
+- Layer: Modification to a base image. Layers are supplied in sequence to create a final image and then will be viaaible in the tags section in the docker.
+- Container: Built from an image. Can have many copies of the same image running as containers and they are just the =light weight Virtual machine= that helps us in understanding the packages required and thus we need not have to worry about the binaried in the container.
+- Dockerfile: Instructions for how to build an image. Has a special syntax that contains all the commands that are routed to the command line to build an image build -f or build -t depends on the user wish and also the process of the building the docker file as a image. 
+- Commit: One of the benefits of Docker is that it offers version control of a computing environment. This is handled similar to git.[to just initilize the new changes done on a cotnainer locally then we can tag and push the container to the docker registry].
+- DockerHub/Container Registry: A repository/hub for Docker containers. Can be public and/or  private. Dockerhub (public) vs Azure/AWS offerings of container registries (private).
+
+** Dockerfile Example
+A Dockerfile has INSTRUCTIONS and arguments to buld the new container. It is not neccessary that they be capitalized, but it is the convention.
+
+*** FROM
+
+The *FROM* statement specifies the base image. In our example, we are taking the =postgres= base image from [[https://hub.docker.com/_/postgres/][Dockerhub]]. 
+
+*** LABEL
+
+The *LABEL* statement adds metadata to the image. It is optional, but is helpful if you are pushing your containers to a shared registry so people know who to contact in case of an issue.
+
+*** RUN
+
+The *RUN* statement is the work force of the Dockerfile. In our case, we are using it to run shell commands. These commands have nothing to do with Docker but are basic Linux commands. 
+
+or else even if you have the os image just run
+=docker run -it <image-name>= this will give an acess to the new container.
+
+*** WORKDIR
+
+The *WORKDIR* statement is often sued to specify a working directory. Any subsequent commands will assume that is the working directory from the cotnainerised image which has its own file system(after building it with the OS from the =FROM= command in the Dockerfile.
+
+*** ADD
+
+The *ADD* statement lets you copy files from the host machine to the docker container whhile building the container image. 
+
+*** CMD
+
+The *CMD* statement is used to provide defaults when executing a container. Only one *CMD* statement is valid per container, and if you provide several, only the last one will be used by the container. 
+
+More information on Docker commands can be found here: https://docs.docker.com/engine/reference/builder/
+
+Typiticla structure of the Docker File is very snesitive thus make sure that you keep this in mind "mages in Docker don't have a name, they have tags. ... Multiple tags may refer to the same image. If you reassign a tag that is already used, then the original image will lose the tag, but will continue to exist (it will still be accessible by its image ID, and other tags might refer to it)." 
+
+thus use [tag-name]:[tag] -m [message to the docker hub] as the methods to get to know that you have changed something for the container
+
+Even in tagging people can go wrong here in the process of development thus we have to be very sure about what we want to do.
+#+BEGIN_EXAMPLE
+FROM [Image from the Docker hub]  => you can choose the docker image that you want your container to have ,a dockerised VM to run on.
+RUN [an commad that you want to run like apt-get update && apt-get install <package>]
+
+CMD [only one CMD command taken even if you have many only the last command will be executed]
+
+#+END_EXAMPLE
+
+thus you can start building your own Dockerfile from now on remember Dockerfile has no file extension.
+
+
