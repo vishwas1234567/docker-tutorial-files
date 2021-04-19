@@ -61,3 +61,113 @@ One of the primary advantages of docker swarms is that they increase application
 =Docker swarm can adequaltely make the load balencers job easier:=
 
 Docker swarm schedules assignments using various methodologies to ensure that adequate services are available for all containers. The swarm manager guarantees that container workloads are delegated to the most suitable host for maximum utilisation by a method known as automatic load balancing.
+
+lets do some commands on the Docker Swarm
+
+if we want to really test the docker swarm and nderstand their commands:
+
+docker swarm COMMAND
+
+Docker CA command is to certify the Docker container:
+
+docker swarm ca
+
+-----BEGIN CERTIFICATE-----
+MIIBazCCARCgAwIBAgIUJPzo67QC7g8Ebg2ansjkZ8CbmaswCgYIKoZIzj0EAwIw
+EzERMA8GA1UEAxMIc3dhcm0tY2EwHhcNMTcwNTAzMTcxMDAwWhcNMzcwNDI4MTcx
+MDAwWjATMREwDwYDVQQDEwhzd2FybS1jYTBZMBMGByqGSM49AgEGCCqGSM49AwEH
+A0IABKL6/C0sihYEb935wVPRA8MqzPLn3jzou0OJRXHsCLcVExigrMdgmLCC+Va4
++sJ+SLVO1eQbvLHH8uuDdF/QOU6jQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMB
+Af8EBTADAQH/MB0GA1UdDgQWBBSfUy5bjUnBAx/B0GkOBKp91XvxzjAKBggqhkjO
+PQQDAgNJADBGAiEAnbvh0puOS5R/qvy1PMHY1iksYKh2acsGLtL/jAIvO4ACIQCi
+lIwQqLkJ48SQqCjG1DBTSBsHmMSRT+6mE2My+Z3GKA==
+-----END CERTIFICATE-----
+
+
+This is a cluster management command, and must be executed on a swarm manager node. To learn about managers and workers, refer to the Swarm mode section in the documentation.
+
+you can also look at the =--rotate== option here
+
+docker swarm ca --rotate
+
+desired root digest: sha256:05da740cf2577a25224c53019e2cce99bcc5ba09664ad6bb2a9425d9ebd1b53e
+  rotated TLS certificates:  [=========================>                         ] 1/2 nodes
+  rotated CA certificates:   [>                                                  ] 0/2 nodes
+
+-----BEGIN CERTIFICATE-----
+MIIBazCCARCgAwIBAgIUFynG04h5Rrl4lKyA4/E65tYKg8IwCgYIKoZIzj0EAwIw
+EzERMA8GA1UEAxMIc3dhcm0tY2EwHhcNMTcwNTE2MDAxMDAwWhcNMzcwNTExMDAx
+MDAwWjATMREwDwYDVQQDEwhzd2FybS1jYTBZMBMGByqGSM49AgEGCCqGSM49AwEH
+A0IABC2DuNrIETP7C7lfiEPk39tWaaU0I2RumUP4fX4+3m+87j0DU0CsemUaaOG6
++PxHhGu2VXQ4c9pctPHgf7vWeVajQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMB
+Af8EBTADAQH/MB0GA1UdDgQWBBSEL02z6mCI3SmMDmITMr12qCRY2jAKBggqhkjO
+PQQDAgNJADBGAiEA263Eb52+825EeNQZM0AME+aoH1319Zp9/J5ijILW+6ACIQCg
+gyg5u9Iliel99l7SuMhNeLkrU7fXs+Of1nTyyM73ig==
+-----END CERTIFICATE-----
+
+
+The command to initialize the container is given here,container are more 
+
+docker swarm --init [OPTIONS]
+
+Initialize a swarm. The docker engine targeted by this command becomes a manager in the newly created single-node swarm.
+
+docker swarm init --advertise-addr 192.168.99.121
+Swarm initialized: current node (bvz81updecsj6wjz393c09vti) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-1awxwuwd3z9j1z3puu7rcgdbx \
+    172.17.0.2:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+=--data-path-port=
+
+This flag allows you to choose the UDP port number that will be used for data path traffic. The given port number must be between 1024 and 49151. If this flag is not set or is set to 0, the port number 4789 is used by default. The data path port can only be configured when the swarm is first created, and it applies to all nodes that join the swarm.The following example initializes a new Swarm, and configures the data path port to UDP port 7777;
+
+docker swarm init --data-path-port=7777
+
+
+thus lets talk some really required commands(this might repeat as some commands were reused as we really wanted to get the intruction to the commands that was needed,The above might not help you on getting some commands to the demo thus had to give the above sessional introuction.
+
+=Initilizing the swarm=
+
+docker swarm init --advertise-addr <ip-address>
+
+=List of the services=
+
+docker services ls
+
+=listtask of Services=
+
+docker service ps <name>
+
+=Creating the new service=
+
+Docker service create <name> <image-name>
+
+=Remove Service=
+
+docker service rm <name>
+
+=Scalling service=
+
+docker service scale <name?=5
+
+thus a common command 
+
+The aboe is the service level swarm integratonmthus we need to get to the node level ,thus this programme is no less than an kubernetes cluster that we are trying to work with.
+
+the command to list the number of nodes working
+
+docker node ls
+
+Listing the services in the node
+
+docker node ps
+
+removing the node 
+
+docker node rm<id>
