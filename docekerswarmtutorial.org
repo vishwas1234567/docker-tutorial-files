@@ -10,4 +10,54 @@ Docker Swarm Explained: To contextualise our definition of a Docker swarm, let's
 
 Docker is a software interface that allows software developers to seamlessly incorporate container use into the software development process. Docker is an open source software that is usable for Windows and Mac, making it accessible to developers operating on a range of technologies. The programme serves as a command and control interface between the host operating system and containerized systems.
 
-The key subject of the docker programme is containers and their use and management in the software development process. Containers allow developers to bundle software with all of the code and dependencies required for them to work in any computing environment. As a result, when moving containerized applications from one computing environment to another, they run reliably.
+Containers:
+The key subject of the docker programme is containers and their use and management in the software development process(just like how you can manage the reouseresavaialbel to you). Containers allow developers to bundle software with all of the code and dependencies(libraries,binaries and frameworks) required for them to work in any computing environment. As a result, when moving containerized applications from one computing environment to another, they run reliably.
+
+Dockerimage
+
+An image is a collection of executable files that includes all of the code, libraries, runtime, binaries, and configuration files used to execute an application. A container can be thought of as an image's runtime case.
+
+Docker file
+
+The name given to the type of file that specifies the contents of a portable image is Dockerfile. Assume you're writing a programme in the Java programming language. Since your computer does not understand Java, you may need a method to translate your code into machine code. The libraries, configuration files, and programmes used to accomplish this are referred to collectively as the "Java Runtime Environment (JRE)." In Docker, all of these assets would be included in the Dockerfile.
+
+
+There are two kinds of resources in Docker Swarm: replicated and national.
+
+SWarm Mode : Swarm mode replicated resources work by defining a set of replica tasks for the swarm manager to delegate to available nodes.
+
+Global Service Mode : Global services work by scheduling one job to each available node that satisfies the operation restrictions and resource requirements using the swam manager.
+
+
+Docker Swarm Node :
+
+A docker swarm is a collection of physical or virtual machines that operate in a cluster. When a computer enters the cluster, it joins the swarm. The docker swarm mechanism distinguishes three types of nodes, each with a distinct position in the docker swarm ecosystem:
+
+Manager node :
+
+Manager nodes primary role is to delegate assignments to worker nodes in the swarm. Manager nodes also assist with some of the managerial activities used to run the swarm. A swarm should have no more than seven boss nodes, according to Docker.
+
+Leader node :
+
+When a cluster is formed, the Raft consensus algorithm is used to select one of them to serve as the "leader node." Both swarm control and mission orchestration decisions are made by the leader node. If the leader node becomes inactive due to an interruption or malfunction, the Raft consensus algorithm can be used to elect a new leader node.
+
+Worker Node :
+
+Each worker node in a docker swarm with several hosts works by obtaining and executing tasks assigned to it by manager nodes. By default, all manager modes are also worker nodes capable of performing tasks when the resources are available.
+
+Benefits of the Docker Swarm:
+
+We're seeing a growing number of developers use the Docker engine and docker swarms to build, update, and run applications more efficiently. And tech behemoths such as Google are embracing container-based methodologies such as docker swarm. Here are three straightforward explanations why Docker Swarms are gaining popularity:
+
+they are used in Leveraging the Power of Containers
+
+Docker swarm is common with developers because it completely exploits the architecture advantages provided by containers. Containers allow developers to instal software or utilities in self-contained virtual worlds, a role previously reserved for virtual machines.Containers are proving a more lightweight version of virtual machines, as their architecture allows them to make more efficient use of computing power.
+
+Docker Swarm Helps in High Service Availability
+
+One of the primary advantages of docker swarms is that they increase application flexibility by replication. A docker swarm needs a swarm manager to delegate tasks to worker nodes in order to run. Developers ensure that the mechanism can continue to run even though one of the manager nodes fails by adding multiple managers. For each, Docker suggests a limit of seven manager nodes withing a cluster.
+
+
+Docker swarm can adequaltely make the load balencers job easier:
+
+Docker swarm schedules assignments using various methodologies to ensure that adequate services are available for all containers. The swarm manager guarantees that container workloads are delegated to the most suitable host for maximum utilisation by a method known as automatic load balancing.
