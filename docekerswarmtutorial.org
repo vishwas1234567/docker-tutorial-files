@@ -163,14 +163,14 @@ thus a common command
 
 The aboe is the service level swarm integratonmthus we need to get to the node level ,thus this programme is no less than an kubernetes cluster that we are trying to work with.
 
-the command to list the number of nodes working
+=the command to list the number of nodes working=
 
 docker node ls
 
-Listing the services in the node
+=Listing the services in the node=
 
 docker node ps
 
-removing the node 
+=removing the node=
 
 docker node rm<id>
