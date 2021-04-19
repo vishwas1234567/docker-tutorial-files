@@ -1,7 +1,7 @@
 * Getting Familiar with the Docker Client:thus lets talk some theory
-Docker Engine is a containerization technology that you can use to create and containerize your software. The Docker Engine is a client-server programme that includes the following features:
+=Docker Engine= is a containerization technology that you can use to create and containerize your software. The Docker Engine is a client-server programme that includes the following features:
 
-Dockerd is a daemon method that runs on a computer for a long time.
+Docker is a daemon method that runs on a computer for a long time.
 APIs define how programmes can communicate with and advise the Docker daemon.
 
 Docker Engine is available on a variety of Linux platforms, macOS and Windows 10 through Docker Desktop, and as a static binary installation. Find your preferred operating system setting and do it.(in linux and mac the installation is a little different thus refer to videos,in windows you just need to run the exe file and then add the dependencied like wsl2 or Hyper-V backend that is required.)
