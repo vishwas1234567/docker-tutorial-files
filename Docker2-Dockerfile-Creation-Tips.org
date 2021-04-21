@@ -35,6 +35,14 @@ The *WORKDIR* statement is often sued to specify a working directory. Any subseq
 
 The *ADD* statement lets you copy files from the host machine to the docker container whhile building the container image. 
 
+*** COPY
+
+The COPY instruction copies new files or folders from src> and places them in the container's filesystem at the direction dest>. In addition. The destination route is either absolute or relative to the WORKDIR Docker Documentation.
+
+*** EXPOSE
+
+Docker is informed by the EXPOSE instruction that the container listens on the required network ports at runtime. You may decide whether the port listens on TCP or UDP, with TCP being the default if no protocol is specified. The port is not directly published by the EXPOSE instruction.
+
 *** CMD
 
 The *CMD* statement is used to provide defaults when executing a container. Only one *CMD* statement is valid per container, and if you provide several, only the last one will be used by the container. 
