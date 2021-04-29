@@ -1,0 +1,31 @@
+* Setting up a Dev Environment for the datascience
+
+When working on a python project, a common way that people will manage their dependencies is running =pip freeze > requirements.txt= or =pip install requirements.txt= and coupling that with =virtualenv= to manage project level dependencies(that is required for mainting the project environemnt).
+
+Often, when reproducing the project to somebody else's we have to give the .exe version fo the file and that is not good for testing,analysis, it is not enough to run =pip install -r requirements.txt= in the repository.  
+
+However, sometimes there are configurations that are specific system level dependencies that are not captured. As we go along with developing the code, we will install system-level dependencies as required by the package.  
+
+To be able to replicate all the system level dependencies, you can see how Docker could easily be used and can be shared throug the docker hub just liek the contianers are sent and then the developer environemtn can be run.
+
+Now we move to the next stage, which is figuring out how to layer instructions, and put together a Dockerfile to set up a docker container with your exact specifications to replicate your results. 
+
+We have observed the following issues: 
+
+1. Somebody builds a tool in a different flavour of python with several package changes(each package has a dependent package which can give different version =may be a older version for the new framework installed=)) 
+2. Struggling to manage =virtualenvs= for different packages, broken =virtualenvs= or else forgetting it also is a big chance here.
+
+The use case we will explore here, is setting up a python machine with all the tools required for a project, and then setting up a jupyter notebook server within to access all those resources: 
+
+In the terminal run:
+#+BEGIN_EXAMPLE
+docker build -t dev_ds_env .
+#+END_EXAMPLE
+=Note= fullstop for running the environement is a must.
+This should set up a jupyter notebook that you will be able to access with all the tools in the =requirements.txt= file installed. =COPy= commands will work as a magic here.
+
+#+BEGIN_EXAMPLE
+docker run -p 8888:8888 dev_ds_env
+#+END_EXAMPLE
+
+Now access it from your machine, try =localhost:8888=. It will ask you to copy and paste the token you were given.
