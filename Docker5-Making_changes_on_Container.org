@@ -1,0 +1,32 @@
+Making changes to the container and also manipulating the containers.
+
+The above tutorials will say how to run and work with the containers but here we will focus on building the container.
+
+=docker- machine active=
+
+You can see the machine you have created by running the docker-machine ls command again with =docker-machine ls=
+
+thus now you have pulled an ubuntu image and now run it using the command
+
+=docker run -it [contianer-id] /bin/bash=
+
+will give you the cmd of the cotainer image
+
+thus run the two below commands
+
+=apt-get update=
+=apt-get install npm= this is to install the node package on to the image.
+
+Docker file is basically not changed here but the inage gets changed without changing the Dockerfile.
+
+then exit the cotainer with the =exit= command.
+
+Now whne you do =docker ps= you will not find the comtainer running as you have came out of the container.
+
+also you can check with the command =docker container ls=
+
+thus will not show the ubuntu container running.
+
+this is the step where you have to type =docker commit [container-id-from-docekr-images] [use-your-desired-tag]
+
+Then the contianer after execution will get a hash and you will start running the contianer from there with the new contianer-id as you ran the other containers. 
