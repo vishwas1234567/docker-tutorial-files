@@ -15,6 +15,9 @@ will give you the cmd of the cotainer image
 thus run the two below commands
 
 =apt-get update=
+
+                   and
+                   
 =apt-get install npm= this is to install the node package on to the image.
 
 Docker file is basically not changed here but the inage gets changed without changing the Dockerfile.
