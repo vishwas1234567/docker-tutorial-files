@@ -21,3 +21,4 @@ WORKDIR /home/demo
 
 # Start the jupyter notebook
 ENTRYPOINT ["jupyter", "notebook", "--ip=0.0.0.0"]
+#lookign for something more
