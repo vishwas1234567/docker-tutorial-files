@@ -1,4 +1,4 @@
-* Setting up a Dev Environment for the datascience
+* Setting up a Dev Environment for the datascience enviroment
 
 When working on a python project, a common way that people will manage their dependencies is running =pip freeze > requirements.txt= or =pip install requirements.txt= and coupling that with =virtualenv= to manage project level dependencies(that is required for mainting the project environemnt).
 
