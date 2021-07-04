@@ -1,5 +1,5 @@
 #imports from the latest version of the python image from docker hub
-FROM python:3
+FROM python:latest
 
 RUN apt-get update && apt-get install -y python3-pip
 
