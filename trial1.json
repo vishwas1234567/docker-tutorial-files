@@ -1,0 +1,20 @@
+{
+  "documents": [
+    {
+      "id": "1",
+      "text": "Hello world"
+    },
+    {
+      "id": "2",
+      "text": "Bonjour tout le monde"
+    },
+    {
+      "id": "3",
+      "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
+    },
+    {
+      "id": "4",
+      "text": ":) :( :D"
+    }
+  ]
+}

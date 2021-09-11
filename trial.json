@@ -1,0 +1,16 @@
+{
+    "document":[
+        {
+            "id" : "1",
+            "Text" : "hello you all I love technology"
+        },
+        {
+            "id" : "2",
+            "Text" : "hola a todos me encanta la tecnología"
+        },
+        {
+            "id" : "3",
+            "Text" : "hallo ihr alle ich liebe technik"
+        }
+    ]
+}

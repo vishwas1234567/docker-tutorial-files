@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: keyphrase
+spec:
+  template:
+    metadata:
+      labels:
+        app: keyphrase-app
+    spec:
+      containers:
+      - name: keyphrase
+        image: mcr.microsoft.com/azure-cognitive-services/keyphrase
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 1
+          limits:
+            memory: 4Gi
+            cpu: 1
+        env:
+        - name: EULA
+          value: "accept"
+        - name: billing
+          value: https://vishwas123.cognitiveservices.azure.com/ # {ENDPOINT_URI}
+        - name: apikey
+          value: 746abc5115a14acb8a94c89c1dff9569 # {API_KEY}
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: keyphrase
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: keyphrase-app
+
+
+    # kubectl apply -f keyphrase.yaml

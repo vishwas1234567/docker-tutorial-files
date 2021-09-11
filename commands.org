@@ -1,0 +1,140 @@
+# just some commands
+
+
+#+BEGIN_EXAMPLE
+docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/language
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment
+#+END_EXAMPLE
+
+
+The Generalized command to run the Container
+#+BEGIN_EXAMPLE
+docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment Eula=accept Billing=https://vishwas123.cognitiveservices.azure.com/ ApiKey=ee6aeaf79d514a9886d705a9ad020540 
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 mcr.microsoft.com/azure-cognitive-services/textanalytics/language Eula=accept Billing=https://vishwas123.cognitiveservices.azure.com/ ApiKey=ee6aeaf79d514a9886d705a9ad020540 
+#+END_EXAMPLE
+
+
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/textanalytics/language Eula=accept Billing=https://vishwas123.cognitiveservices.azure.com/ ApiKey=ee6aeaf79d514a9886d705a9ad020540 
+
+
+
+Change the **ENDPOINT_URI** and also **API_KEY** in the above Commands.
+
+
+
+
+#some Credentials that I am understanding - Dont worry I have removed the resource group
+
+
+ee6aeaf79d514a9886d705a9ad020540 - key 1
+
+
+746abc5115a14acb8a94c89c1dff9569 - Key 2
+
+
+https://vishwas123.cognitiveservices.azure.com/ - endpoint
+
+
+eastus - Location
+
+
+
+
+
+# **The URL's to acess the container**
+
+
+#+BEGIN_EXAMPLE
+http://localhost:5000/
+
+http://localhost:5000/ready
+
+http://localhost:5000/status
+
+http://localhost:5000/swagger
+
+#+END_EXAMPLE
+
+
+**For the Kubernetes look for the YAML files the command is commented at the end**
+
+
+But some commands still remain the same
+#+BEGIN_EXAMPLE
+kubectl get pods
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+kubectl get services
+#+END_EXAMPLE
+
+**and also learn something more about swagger**
+
+
+https://swagger.io/docs/specification/2-0/what-is-swagger/
+
+
+**this URL listed above will give you all the understanding**
+
+
+#+BEGIN_EXAMPLE
+for the azure Container Instance :
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+Change size to the suggested recommendations for your specific Cognitive Service container:
+2 CPU cores
+4 GB
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+In networking in the ACI tab choose
+
+
+Set the TCP port to 5000. Exposes the container on port 5000.
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+
+In Advanced tab in ACI do these setting:
+
+
+ApiKey	: Copied from the Keys and endpoint page of the resource. It is a 32 alphanumeric-character string with no spaces or dashes, xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+Billing	: Your endpoint URL copied from the Keys and endpoint page of the resource.
+Eula	: accept
+
+#+END_EXAMPLE
+
+
+# Lets Do Some AKS:
+
+#+BEGIN_EXAMPLE
+az login
+
+
+az aks get-credentials -n your-cluster-name -g -your-resource-group
+
+
+kubectl get nodes
+
+
+kubectl get services
+
+
+kubectl get service <service name> --watch
+#+END_EXAMPLE
